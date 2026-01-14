@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>승희 성향 테스트</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      padding: 30px;
+    }
+    .quiz-box {
+      max-width: 600px;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+    }
+    .question {
+      margin-top: 20px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 30px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="quiz-box">
+  <h1>승희 이해도 테스트 💭</h1>
+
+  <div class="question">
+    <p>1. 승희가 연애에서 가장 예민해지는 상황은?</p>
+    <input type="radio" name="q1" value="0"> 연락 빈도<br>
+    <input type="radio" name="q1" value="1"> 이성이 있는 자리 참석<br>
+    <input type="radio" name="q1" value="0"> 데이트 장소<br>
+  </div>
+
+  <div class="question">
+    <p>2. 승희가 가장 좋아하는 뮤지컬은?</p>
+    <input type="radio" name="q2" value="1"> 데스노트<br>
+    <input type="radio" name="q2" value="0"> 레미제라블<br>
+    <input type="radio" name="q2" value="0"> 위키드<br>
+  </div>
+
+  <div class="question">
+    <p>3. 승희가 갈등 상황에서 가장 힘들어하는 것은?</p>
+    <input type="radio" name="q3" value="1"> 애매한 태도와 확신 없는 말<br>
+    <input type="radio" name="q3" value="0"> 큰 목소리의 싸움<br>
+    <input type="radio" name="q3" value="0"> 장거리 연애<br>
+  </div>
+
+  <div class="question">
+    <p>4. 승희의 성향에 가장 가까운 설명은?</p>
+    <input type="radio" name="q4" value="1"> 감정에 솔직하지만 스스로를 많이 돌아봄<br>
+    <input type="radio" name="q4" value="0"> 무던하고 둔한 편<br>
+    <input type="radio" name="q4" value="0"> 감정보다 이성이 우선<br>
+  </div>
+
+  <button onclick="checkResult()">결과 보기</button>
+
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+  function checkResult() {
+    let score = 0;
+    const questions = ['q1', 'q2', 'q3', 'q4'];
+
+    questions.forEach(q => {
+      const selected = document.querySelector(`input[name="${q}"]:checked`);
+      if (selected) {
+        score += parseInt(selected.value);
+      }
+    });
+
+    let message = "";
+
+    if (score === 4) {
+      message = "💯 완벽 이해! 승희의 감정과 기준을 정말 잘 알고 있어.";
+    } else if (score >= 2) {
+      message = "🙂 꽤 잘 알고 있지만, 승희는 생각보다 더 섬세한 사람이야.";
+    } else {
+      message = "🤔 아직은 부족! 승희는 겉보다 속이 훨씬 복잡한 사람이야.";
+    }
+
+    document.getElementById("result").innerText = `점수: ${score}/4\n${message}`;
+  }
+</script>
+
+</body>
+</html>
